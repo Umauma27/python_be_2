@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tomorrow-night-eighties.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <title>pythonBe2</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <header>
+                    <h2>ビジネスエコノミクス　プログラミング 2年</h2>
+                </header>
+                <h2>課題2</h2>
+                <p>確認中</p>
+                <pre>
+        <code>
+                import numpy as np
+                pi = np.pi
+                
+                print("半径rの値を入力してください")
+                r = input()
+                r = int(r)
+                
+                print("長さlの値を入力してください")
+                l = input()
+                l = int(l)
+                
+                
+                circle = r * r * pi
+                circle = str(circle)
+                square = l * l
+                square= str(square)
+                
+                
+                print("円の面積は"+circle+"です。")
+                print("正方形の面積は"+square+"です。")
+                
+                circle = float(circle)
+                square = float(square)
+                
+                if circle > square:
+                    print("面積がより大きいのは円です")
+                else:
+                    print("面積がより大きいのは正方形です")
+
+        </code>
+            </pre>
+                <h2>課題3-1</h2>
+                <p>以下のような処理を行うプログラムを作成せよ。<br>①ユーザーにURLの入力を求める。<br>②プロトコルを表示する。</p>
+                <pre>
+            <code>
+                import webbrowser
+                print("開きたいURLを入力してください")
+                url = input();
+            
+                webbrowser.open(url)
+            </code>
+            </pre>
+                <h2>課題3-2</h2>
+                <p>①課題3-1を以下の情報を表示するようにプログラムを拡張しなさい。<br>1.トップレベルドメイン<br>2.ホスト名<br>3.パス<br>4.ファイル名(拡張子も含む)</p>
+                <pre>
+        <code>
+                from urllib.parse import urlparse
+                print("URLを入力してください")
+                url = input()
+                
+                parsed_url = urlparse(url)
+                print("プロトコル : "+parsed_url.scheme)
+                netLoc = parsed_url.netloc
+                splitedNetLoc = netLoc.split(".")
+                print("トップレベルドメイン : ."+splitedNetLoc[3])
+                print("ホスト名 : "+splitedNetLoc[0])
+                path = parsed_url.path
+                splitedPath = path.split("/")
+                splitedPath.pop(-1)
+                joinedPath = "/".join(splitedPath)
+                print("パス : "+joinedPath)
+                splitedPath = path.split("/")
+                print("ファイル名 : "+splitedPath.pop(-1))
+        </code>
+        </pre>
+                <h2>課題4</h2>
+                <p>下記のプログラムは、正の整数xを二乗した値を出力するプログラムとなっている。xが負の値の場合にも最後の出力結果が正しい表示となるように修正しなさい。</p>
+                <pre>
+        <code>
+                x = -3
+                ans = 0
+                itersLeft = x
+                if x < 0:
+                    while (itersLeft != 0):
+                        ans = ans + x
+                        itersLeft = itersLeft + 1
+                    print(str(x) + ' * ' + str(x) + ' = ' + str(-ans))
+                elif x > 0:
+                    while (itersLeft != 0):
+                        ans = ans + x
+                        itersLeft = itersLeft - 1
+                    print(str(x) + ' * ' + str(x) + ' = ' + str(ans))
+                else:
+                    print('0 * 0 = 0')
+        </code>
+        </pre>
+                <h2>課題5</h2>
+                <p>完全平方数の平方根を総当たりによって求めるプログラムを作成しなさい。</p>
+                <pre>
+        <code>
+                import math
+
+                print("完全平方数を入力してください")
+                userInput = input()
+                
+                num1 = int(userInput)
+                num2 = math.sqrt(num1)
+                num3 = int(num2)
+                
+                print("ユーザー入力値"+str(num1))
+                print("ユーザー入力値の平方数"+str(num2))
+                print("ユーザー入力値の平方数のint化"+str(num3))
+                
+                for i in range(1,num3+2):
+                    tmp = i * i
+                    if(num1 == tmp):
+                        print(str(num1)+"の完全平方数は"+str(num3)+"です。")
+                        break
+                if(num1 != tmp):
+                    print(str(num1)+"は完全平方数ではありません")
+        </code>
+        </pre>
+                <h2>課題5(別解)</h2>
+                <pre>
+        <code>
+                import numpy as np
+
+                print("完全平方数を入力してください")
+                userInput = input()
+                
+                num1 = int(userInput)
+                num2 = np.sqrt(num1)
+                num3 = int(num2)
+                
+                if(np.sqrt(num1) == np.sqrt(num3 * num3)):
+                    print(str(num1)+"の完全平方数は"+str(num3)+"です。")
+                    
+                else:
+                    print(str(num1)+"は完全平方数ではありません")
+        </code>
+        </pre>
+                <h2>課題6</h2>
+                <p>リストから重複した要素を除いたリストを作成するうろグラムを作成しなさい。</p>
+                <pre>
+        <code>
+                list = [5,2,3,3,4,6,6,2,5,3]
+                newlist = []
+                for x in list:
+                    if x not in newlist:
+                        newlist.append(x)
+                print(list)
+                print(newlist)
+        </code>
+        </pre>
+                <h2>課題7</h2>
+                <p>氏名の文字列の組(tuple)の要素からイニシャルを取り出して結合するプログラムを作成しなさい。</p>
+                <pre>
+        <code>
+                name = [("George","Washington"),("Thomas","Jefferson"),("Abraham","Lincoln"),("Koushi","Nishida")]
+
+                initials = []
+                temp = 0
+                for i in name:
+                    initials.append(name[temp][0][0]+name[temp][1][0])
+                    temp = temp + 1
+                    
+                print(initials)
+        </code>
+        </pre>
+                <h2>課題8</h2>
+                <p>キーが商品番号、値が販売数である辞書から販売数上位3位まで商品を取り出すプログラムを作成しなさい。</p>
+                <pre>
+        <code>
+                dict = {'item1':45.50,'item2':3.5,'item3':41.30,'item4':55,'item5':24}
+                array = []
+                for k, v in sorted(dict.items(), key=lambda x: -x[1])[0:3]:
+                    array.append(str(k))
+                    if len(array) > 4:
+                        break
+                array = sorted(array)
+                print(array)
+        </code>
+        </pre>
+                <h2>課題9</h2>
+                <p>更新予定</p>
+                <pre>
+        <code>
+        </code>
+        </pre>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
