@@ -690,14 +690,56 @@ print(array)
 </pre>
 
 
-                <h2>課題9</h2>
-                <p>更新予定(スクショくれれば作ります笑)</p>
+                <h2>課題9-A</h2>
+                <p>ハイフンで結合された単語の文字列を入力し、ソートされた単語をハイフンで結合した文字列を返す関数を定義しなさい。</p>
                 <pre>
 <code class="python">
+def hyphen_sorted(connectedString):
+以下略
+print(hyphen_sorted("red-green-blue"))
 </code>
 </pre>
-                <p>@author: Yuma Shimizu</p>
+                <h3>課題9-A 解答例</h3>
+                <pre>
+        <code class="python">
+def hyphen_sorted(connectedString):
+hyphen_array = connectedString
+splited_array = hyphen_array.split("-")
+splited_array.sort()
+sorted_hyphen_array = '-'.join(splited_array)
 
+return sorted_hyphen_array
+
+
+print(hyphen_sorted("red-blue-green"))
+#コンソール結果
+#blue-green-red
+        </code>
+        </pre>
+                <h2>課題9-B</h2>
+                <p>filterを使って整数のリストの中から5の倍数を取り出すプログラムを作成しなさい。</p>
+                <pre>
+<code class="python">
+numList = [1, 5,31,12,16,25]
+#以下略
+</code>
+</pre>
+                <h3>課題9-B 解答例</h3>
+                <pre>
+<code class="python">
+numList = [1, 5,31,12,16,25]
+filteredList = list(filter(lambda x: x % 5 == 0, numList))
+print(filteredList)
+#コンソール結果
+#[5,25]
+</code>
+</pre>
+
+
+
+
+
+                <p>@author: Yuma Shimizu</p>
             </div>
         </div>
     </div>
